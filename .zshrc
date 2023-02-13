@@ -22,7 +22,7 @@ plug "zsh-users/zsh-history-substring-search"
 
 export MAKEFLAGS="-j$(expr $(nproc) \+ 1)" 
 export SHELL="/bin/zsh"
-export PATH=$PATH:/home/rikka/Applications/
+export PATH=$PATH:$HOME/Applications/
 source /usr/share/nvm/init-nvm.sh
 
 
@@ -33,7 +33,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/shims:$PATH"
 
 # pnpm
-export PNPM_HOME="/home/rikka/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
@@ -55,3 +55,5 @@ bindkey '^[[F' end-of-line
 bindkey '^[[3~' delete-char
 bindkey '^[[3;5~' kill-word
 bindkey '^H' backward-kill-word
+bindkey '^[[1;5C' emacs-forward-word
+bindkey '^[[1;5D' emacs-backward-word
