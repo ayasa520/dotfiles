@@ -1,0 +1,164 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "path",
+          "style": "diamond",
+          "foreground": "#BBC3DF",
+          "background": "#24263a",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "template": "<#ECD3A0,#24263a>\ue5ff</> <b>{{ .Path }}</b>",
+          "properties": {
+            "style": "agnoster"
+          }
+        },
+        {
+          "type": "git",
+          "style": "diamond",
+          "foreground": "#86AAEC",
+          "background": "#24263a",
+          "leading_diamond": " \ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "template": "<b><#A2DD9D,#24263a></></b> {{ .HEAD }}",
+          "properties": {
+            "branch_icon": ""
+          }
+        },
+        {
+          "foreground": "#a6e3a1",
+          "foreground_templates": ["{{ if gt .Code 0 }}#f38ba8{{ end }}"],
+          "properties": {
+            "always_enabled": true
+          },
+          "style": "diamond",
+          "template": " {{ if gt .Code 0 }}<b></b>{{ else }}{{ end }} ",
+          "type": "exit"
+        },
+        {
+          "type": "python",
+          "style": "diamond",
+          "foreground": "#E4F34A",
+          "background": "#424242",
+          "leading_diamond": " \ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "template": "\ue235{{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}",
+          "properties": {
+            "fetch_version": false
+          }
+        },
+        {
+          "type": "go",
+          "style": "diamond",
+          "foreground": "#7FD5EA",
+          "background": "#424242",
+          "leading_diamond": " \ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "template": "\ufcd1{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
+          "properties": {
+            "fetch_version": false
+          }
+        },
+        {
+          "type": "node",
+          "style": "diamond",
+          "foreground": "#42E66C",
+          "background": "#424242",
+          "leading_diamond": " \ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "template": "\ue718{{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }}",
+          "properties": {
+            "fetch_version": false
+          }
+        },
+        {
+          "type": "ruby",
+          "style": "diamond",
+          "foreground": "#E64747",
+          "background": "#424242",
+          "leading_diamond": " \ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "template": "\ue791{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
+          "properties": {
+            "fetch_version": false
+          }
+        },
+        {
+          "type": "java",
+          "style": "diamond",
+          "foreground": "#E64747",
+          "background": "#424242",
+          "leading_diamond": " \ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "template": "\ue738{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
+          "properties": {
+            "fetch_version": false
+          }
+        },
+        {
+          "type": "julia",
+          "style": "diamond",
+          "foreground": "#9B6BDF",
+          "background": "#424242",
+          "leading_diamond": " \ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "template": "\ue624{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
+          "properties": {
+            "fetch_version": false
+          }
+        }
+      ]
+    },
+    {
+      "alignment": "right",
+      "segments": [
+        {
+          "type": "git",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4 ",
+          "foreground": "#b4befe",
+          "background": "#24263a",
+          "template": "{{if .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uF692{{ .StashCount }}{{ end }}",
+          "properties": {
+            "fetch_status": true,
+            "fetch_stash_count": true
+          }
+        },
+        {
+          "foreground": "#BBC3DF",
+          "background": "#24263a",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4 ",
+          "properties": {
+            "style": "round",
+            "threshold": 10
+          },
+          "style": "diamond",
+          "template": "<#eba0ac, #24263a><b>神</b></>{{ .FormattedMs }}",
+          "type": "executiontime"
+        },
+        {
+          "type": "command",
+          "style": "diamond",
+          "foreground": "#a6e3a1",
+          "foreground_templates": ["{{if and (gt (.Output | int) 80) (lt (.Output | int) 91)}}#d7af00{{end}}{{if gt (.Output | int) 90}}#eba0ac{{end}}"],
+          "background": "#24263a",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "template": "<b></b> {{.Output}}%",
+          "properties": {
+            "shell": "bash",
+            "command": "df -P . | sed 1d | awk '{print $5}' | tr -d '%'"
+          }
+        }
+      ],
+      "type": "rprompt"
+    }
+  ]
+}
